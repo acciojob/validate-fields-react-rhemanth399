@@ -13,7 +13,7 @@ const App = () => {
     setData({...data,[e.target.name]:e.target.value})
     
   }
-  let submit=(e)=>{
+  let handleSubmit=(e)=>{
     e.preventDefault();
     if(username===""||password==="")
     {
@@ -30,11 +30,11 @@ const App = () => {
  
   return (
     <div>
-        <form onSubmit={submit}>
+        <form onSubmit={handleSubmit}>
         <label htmlFor="Username" style={{display:'inline'}}>Username:</label>
         <input type="text" name="username" onChange={handler} value={username}/>
-
-        <label htmlFor="Password" >Password</label>
+        <div><br/></div>
+        <label htmlFor="Password" style={{display:'inline'}}>Password:</label>
         <input type="password" name="password" onChange={handler} value={password}/>
         <p id='errorMessage' style={{color:'red'}}>{error}</p>
         <button type="submit" >Login</button>
