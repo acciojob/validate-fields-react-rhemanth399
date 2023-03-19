@@ -36,7 +36,7 @@ const App = () => {
 
         <label htmlFor="Password" >Password</label>
         <input type="password" name="password" onChange={handler} value={password}/>
-        <p id='error' style={{color:'red'}}>{error}</p>
+        <p id='errorMessage' style={{color:'red'}}>{error}</p>
         <button type="submit" >Login</button>
         </form>
     </div>
