@@ -1,11 +1,44 @@
 
 import React from "react";
 import './../styles/App.css';
-
+import {useState} from 'react';
 const App = () => {
+  let [data,setData]=useState({
+    username:"",
+    password:""
+  })
+  let [error,setError]=useState("")
+    let {username,password}=data
+  let handler=(e)=>{
+    setData({...data,[e.target.name]:e.target.value})
+    
+  }
+  let submit=(e)=>{
+    e.preventDefault();
+    if(username===""||password==="")
+    {
+      setError('Both username and password are required')
+      return;
+    }
+    setError("");
+    setData({
+      username:"",
+      password:""
+    })
+  }
+  
+ 
   return (
     <div>
-        {/* Do not remove the main div */}
+        <form onSubmit={submit}>
+        <label htmlFor="Username" style={{display:'inline'}}>Username:</label>
+        <input type="text" name="username" onChange={handler} value={username}/>
+
+        <label htmlFor="Password" >Password</label>
+        <input type="password" name="password" onChange={handler} value={password}/>
+        <p id='error' style={{color:'red'}}>{error}</p>
+        <button type="submit" >Login</button>
+        </form>
     </div>
   )
 }
